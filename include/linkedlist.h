@@ -1,25 +1,28 @@
 #ifndef TIMER_LINKEDLIST_H
 #define TIMER_LINKEDLIST_H
 
-typedef struct _node_t node_t;
-
-struct _node_t {
+typedef struct Node_t {
   void *item;
-  struct _node_t *next;
-};
+  struct Node_t *next;
+} Node;
 
-node_t *new_linked_list();
+typedef struct LinkedList_t {
+  int size;
+  struct Node_t *head;
+} LinkedList;
 
-void push_first(node_t **head, void *item);
+LinkedList *new_linked_list();
 
-void push_last(node_t *head, void *item);
+void push_first(LinkedList *ll, void *item);
 
-void *pop_first(node_t **head);
+void push_last(LinkedList *ll, void *item);
 
-void *pop_last(node_t **head);
+void *pop_first(LinkedList *ll);
 
-void *pop_by_index(node_t **head, int index);
+void *pop_last(LinkedList *ll);
 
-void print();
+int size(LinkedList *ll);
+
+void print_items(LinkedList *ll);
 
 #endif //TIMER_LINKEDLIST_H
