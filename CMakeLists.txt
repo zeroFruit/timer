@@ -29,3 +29,4 @@ file(GLOB sources
 		"${PROJECT_SOURCE_DIR}/src/*.c")
 
 add_executable(timer ${sources})
+set_target_properties(timer PROPERTIES DCMAKE_CXX_COMPILER c++ DCMAKE_CXX_FLAGS "-std=c++11 -stdlib=libc++")
