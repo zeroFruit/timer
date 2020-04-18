@@ -42,6 +42,11 @@ void push_last(LinkedList *ll, void *item) {
   ll->size += 1;
 }
 
+// TODO: implement me
+void add_by_index(LinkedList *ll, void *item, int index) {
+
+}
+
 void *pop_first(LinkedList *ll) {
   if (ll->head == NULL) {
     return NULL;
@@ -77,6 +82,16 @@ void *pop_last(LinkedList *ll) {
   current->next = NULL;
   ll->size -= 1;
   return result;
+}
+
+// TODO: implement me
+void *pop_by_index(LinkedList *ll, int index) {
+  return NULL;
+}
+
+// TODO: implement me
+void *peek_by_index(LinkedList *ll, int index) {
+  return NULL;
 }
 
 void print_items(LinkedList *ll) {

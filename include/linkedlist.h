@@ -17,9 +17,15 @@ void push_first(LinkedList *ll, void *item);
 
 void push_last(LinkedList *ll, void *item);
 
+void add_by_index(LinkedList *ll, void *item, int index);
+
 void *pop_first(LinkedList *ll);
 
 void *pop_last(LinkedList *ll);
+
+void *pop_by_index(LinkedList *ll, int index);
+
+void *peek_by_index(LinkedList *ll, int index);
 
 int size(LinkedList *ll);
 
