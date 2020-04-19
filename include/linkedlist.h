@@ -25,8 +25,6 @@ void *pop_last(LinkedList *ll);
 
 void *pop_by_index(LinkedList *ll, int index);
 
-void *peek_by_index(LinkedList *ll, int index);
-
 int size(LinkedList *ll);
 
 void print_items(LinkedList *ll);

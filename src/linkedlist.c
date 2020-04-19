@@ -42,9 +42,33 @@ void push_last(LinkedList *ll, void *item) {
   ll->size += 1;
 }
 
-// TODO: implement me
 void add_by_index(LinkedList *ll, void *item, int index) {
-
+  if (index >= ll->size) {
+    perror("add_by_index failed: index is out of bound.");
+    return;
+  }
+  Node *prev = NULL;
+  Node *current = ll->head;
+  int i = 0;
+  while (i != index) {
+    prev = current;
+    current = current->next;
+    i += 1;
+  }
+  if (prev == NULL) {
+    Node *new_node = malloc(sizeof(Node));
+    new_node->item = item;
+    new_node->next = current;
+    ll->head = new_node;
+    ll->size += 1;
+    return;
+  }
+  Node *new_node = malloc(sizeof(Node));
+  new_node->item = item;
+  new_node->next = current;
+  prev->next = new_node;
+  ll->size += 1;
+  return;
 }
 
 void *pop_first(LinkedList *ll) {
@@ -84,14 +108,39 @@ void *pop_last(LinkedList *ll) {
   return result;
 }
 
-// TODO: implement me
 void *pop_by_index(LinkedList *ll, int index) {
-  return NULL;
-}
-
-// TODO: implement me
-void *peek_by_index(LinkedList *ll, int index) {
-  return NULL;
+  if (index >= ll->size) {
+    perror("pop_by_index failed: index is out of bound.");
+    return NULL;
+  }
+  Node *prev = NULL;
+  Node *current = ll->head;
+  int i = 0;
+  for (; i < index; i++) {
+    prev = current;
+    current = current->next;
+  }
+  // when index is first
+  if (prev == NULL) {
+    ll->head = current->next;
+    void *result = current->item;
+    free(current);
+    ll->size -= 1;
+    return result;
+  }
+  // when index is last
+  if (current->next == NULL) {
+    prev->next = NULL;
+    void *result = current->item;
+    free(current);
+    ll->size -= 1;
+    return result;
+  }
+  prev->next = current->next;
+  void *result = current->item;
+  free(current);
+  ll->size -= 1;
+  return result;
 }
 
 void print_items(LinkedList *ll) {
